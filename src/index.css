@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --genie-primary: 79 70 229;
+    --genie-secondary: 129 140 248;
+    --genie-dark: 17 24 39;
+    --discord: 88 101 242;
+    --solana: 20 241 149;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-gray-900 text-white font-[Inter];
+  }
+}
+
+@layer components {
+  .hero-glow {
+    @apply before:absolute before:inset-0 before:bg-gradient-to-r before:from-indigo-500/10 before:via-purple-500/10 before:to-solana/10;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-solana;
+  }
+
+  .genie-card {
+    @apply bg-gray-800/50 rounded-xl border border-indigo-500/20 p-6 transition-all duration-300 hover:border-indigo-500/40 hover:shadow-lg hover:shadow-indigo-500/10;
+  }
+
+  .discord-button {
+    @apply flex items-center gap-2 px-6 py-3 bg-discord hover:bg-discord/90 text-white font-semibold rounded-lg transition-all duration-300 hover:-translate-y-0.5;
+  }
+
+  .solana-button {
+    @apply flex items-center gap-2 px-6 py-3 bg-[#14F195] hover:bg-[#14F195]/90 text-black font-semibold rounded-lg transition-all duration-300 hover:-translate-y-0.5;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-indigo-500/50 rounded-full hover:bg-indigo-500/70;
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Card hover effects */
+.stat-card {
+  @apply transition-all duration-300;
+}
+
+.stat-card:hover {
+  @apply transform -translate-y-1;
+}
+
+/* Command card styles */
+.command-card {
+  @apply font-mono bg-gray-800/30 rounded-lg p-4 border border-indigo-500/20;
+}
+
+.command-card code {
+  @apply text-indigo-400;
+}
+
+/* Price tag styles */
+.price-tag {
+  @apply relative inline-flex items-baseline;
+}
+
+.price-tag::before {
+  content: '$';
+  @apply absolute -left-4 top-1/2 -translate-y-1/2 text-2xl opacity-75;
+}
+
+/* Feature icon wrapper */
+.feature-icon {
+  @apply w-12 h-12 p-2 rounded-lg bg-indigo-500/10 text-indigo-400 mb-4;
+}
