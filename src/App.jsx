@@ -44,7 +44,8 @@ const CONFIG = {
 const COMMANDS = [
   {
     command: "$upcoming",
-    description: "View next UFC event predictions and analysis",
+    description:
+      "Display next UFC event details, predictions, analysis, and more",
     emoji: "🎯",
     category: "Core",
   },
@@ -62,14 +63,13 @@ const COMMANDS = [
   },
   {
     command: "$model",
-    description: "Switch between GPT-4o and Claude-3.5 AI models.",
+    description: "Switch between GPT-4 and Claude prediction models",
     emoji: "🤖",
     category: "Analysis",
   },
   {
     command: "$stats",
-    description:
-      "Compare accuracy between AI models and view hisorical predictions",
+    description: "View Fight Genie prediction accuracy and performance",
     emoji: "📊",
     category: "Analysis",
   },
@@ -125,18 +125,18 @@ const App = () => {
           {/* Headline Section */}
           <div className="text-center space-y-4 sm:space-y-6 max-w-3xl px-4">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-gray-100 to-blue-500 leading-tight">
-              The Great AI Fight Pick Challenge
+              Discord's #1 UFC Prediction Bot
             </h1>
             <div className="space-y-2">
               <p className="text-xl sm:text-2xl font-semibold text-gray-200">
-                GPT-4o vs Claude 3.5
+                GPT-4 vs Claude-3.5: Who Will Win?
               </p>
               <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto">
-                Experience the Future of Fight Analysis: Two Elite AIs Go
-                Head-to-Head Each Event to Crown the Ultimate Fight Predictor
+                Add Fight Genie to Your Discord Today
               </p>
             </div>
           </div>
+
           {/* Discord Button Section */}
           <div className="flex flex-col items-center space-y-4 sm:space-y-6 w-full max-w-md px-4">
             <a
