@@ -51,7 +51,7 @@ const COMMANDS = [
   },
   {
     command: "$buy",
-    description: "Purchase Fight Genie access for your server",
+    description: "Purchase Fight Genie access for your Discord server",
     emoji: "💳",
     category: "Core",
   },
