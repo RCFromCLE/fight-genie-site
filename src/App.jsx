@@ -84,6 +84,21 @@ const COMMANDS = [
 const App = () => {
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
+      {/* Meta & Favicon */}
+      <div className="hidden">
+        <link rel="icon" type="image/png" href="/FightGenie_Logo_1.PNG" />
+        <meta
+          property="og:title"
+          content="Fight Genie - Discord's #1 UFC Prediction Bot"
+        />
+        <meta
+          property="og:description"
+          content="AI-powered UFC fight predictions and analysis by GPT-4 and Claude-3.5"
+        />
+        <meta property="og:image" content="/FightGenie_Logo_1.PNG" />
+        <meta property="og:url" content="https://fightgenie.ai" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </div>
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[url('/hexagon.svg')] opacity-[0.02]" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black" />
