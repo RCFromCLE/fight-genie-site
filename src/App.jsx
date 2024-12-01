@@ -12,7 +12,7 @@ import {
 
 const CONFIG = {
   social: {
-    twitter: "https://twitter.com/FightGenieAI",
+    twitter: "https://x.com/Fight_Genie",
     blog: "https://fightgenie.ai/blog/announcement",
   },
   prices: {
@@ -325,7 +325,7 @@ const App = () => {
                         in any channel
                       </p>
                       <p className="text-xs sm:text-sm text-gray-400">
-                        Complete your payment and verify access
+                        You will receive a DM. Complete your payment, return to your DM, and verify access
                       </p>
                     </div>
                   </div>
