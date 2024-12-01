@@ -144,7 +144,7 @@ const App = () => {
             </h1>
             <div className="space-y-2">
               <p className="text-xl sm:text-2xl font-semibold text-gray-200">
-                GPT-4 vs Claude-3.5: Who Will Win?
+                GPT-4 vs Claude-3.5: Who Will Predict Better?
               </p>
               <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto">
                 Add Fight Genie to Your Discord Today
@@ -246,6 +246,50 @@ const App = () => {
               </div>
             </div>
           </div>
+
+          {/* Features Section */}
+<div className="w-full max-w-3xl px-4">
+  <div className="p-6 rounded-xl bg-gray-950 border border-gray-800/50 relative group">
+    <div className="absolute -inset-0.5 bg-gradient-to-r from-red-900/30 to-blue-900/30 rounded-xl opacity-50 group-hover:opacity-100 transition-opacity blur"></div>
+    <div className="relative space-y-6">
+      <h2 className="text-2xl font-bold text-center text-gray-200">Features</h2>
+      
+      <div className="space-y-4">
+        <div className="flex items-start space-x-4 p-4 rounded-lg bg-gray-900/50">
+          <span className="text-2xl">🎯</span>
+          <p className="text-sm text-gray-300">
+            GPT-4o and Claude-3.5 compete to predict Main Card & Prelims using the same method(s) and dataset.
+          </p>
+        </div>
+
+        <div className="flex items-start space-x-4 p-4 rounded-lg bg-gray-900/50">
+          <span className="text-2xl">🔒</span>
+          <p className="text-sm text-gray-300">
+            Platform identifies high-probability plays with proprietary lock and edge system
+          </p>
+        </div>
+
+        <div className="flex items-start space-x-4 p-4 rounded-lg bg-gray-900/50">
+          <span className="text-2xl">📊</span>
+          <p className="text-sm text-gray-300">
+            Full fight breakdowns for main and prelims available via DM
+          </p>
+        </div>
+
+        <div className="flex items-start space-x-4 p-4 rounded-lg bg-gray-900/50">
+          <span className="text-2xl">🔄</span>
+          <p className="text-sm text-gray-300">
+            User can update fighter stats if needed for more accurate future predictions
+          </p>
+        </div>
+      </div>
+
+      <p className="text-center text-sm text-gray-400">
+        Additional AI models and features planned for future updates
+      </p>
+    </div>
+  </div>
+</div>
 
           {/* Payment & Setup Section */}
           <div className="w-full max-w-3xl px-4">
@@ -353,7 +397,7 @@ const App = () => {
                     Bot Commands
                   </h2>
                   <p className="text-sm sm:text-base text-gray-400 mt-2">
-                    Simple commands, powerful analysis
+                    All commands start with $ and should work in any channel
                   </p>
                 </div>
 
