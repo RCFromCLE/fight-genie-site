@@ -144,7 +144,7 @@ const App = () => {
             </h1>
             <div className="space-y-2">
               <p className="text-xl sm:text-2xl font-semibold text-gray-200">
-                GPT-4 vs Claude-3.5: Who Will Predict Better?
+                GPT-4o vs Claude-3.5: Who Will Predict Better?
               </p>
               <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto">
                 Add Fight Genie to Your Discord Today
