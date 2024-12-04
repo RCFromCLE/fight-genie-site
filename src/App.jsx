@@ -16,7 +16,7 @@ import {
 const CONFIG = {
   social: {
     twitter: "https://x.com/Fight_Genie",
-    blog: "https://fightgenie.ai/blog/announcement",
+    blog: "https://rudycorradetti.com/2024/12/04/fight-genie-ai-nodejs-discord-bot-ufc-predictions/",
   },
   prices: {
     eventPass: 6.99,
