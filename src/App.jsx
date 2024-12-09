@@ -213,7 +213,7 @@ const App = () => {
                       </div>
                     </a>
                     <p className="text-gray-400 text-sm">
-                      Join 10+ servers already using Fight Genie
+                      Join 20+ servers already using Fight Genie
                     </p>
                   </div>
                   {/* Stats Section */}
