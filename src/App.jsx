@@ -322,7 +322,7 @@ const App = () => {
                       Fight Genie Discord Bot
                     </h1>
                     <p className="text-2xl text-gray-300">
-                      Free AI-Powered UFC Fight Predictions and Analysis
+                      Free AI-Powered UFC Predictions and Analysis
                     </p>
                     <p className="text-xl text-gray-400">
                       Featuring GPT-4o and Claude-3.5
