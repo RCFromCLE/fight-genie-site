@@ -361,7 +361,7 @@ const App = () => {
         .background-overlay {
           position: fixed;
           inset: 0;
-          background-color: rgba(0, 0, 0, 0.85); /* Increased opacity for better readability */
+          background-color: rgba(0, 0, 0, 0.65); /* Reduced opacity for better background visibility */
           z-index: -9; /* Above background images, below content */
         }
 
@@ -592,7 +592,7 @@ const App = () => {
                 </main>
 
                 <footer className="text-center text-gray-500 py-6">
-                  Fight Genie 1.0 • Corratech LLC
+                  Fight Genie 1.1 • Corratech LLC
                 </footer>
               </div>
             </div>
