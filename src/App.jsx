@@ -95,10 +95,10 @@ const App = () => {
         .hero-gradient {
           background: linear-gradient(
             270deg,
-            #ff0000,
-            #ff00ff,
-            #0000ff,
-            #ff0000
+            #B91C1C, 
+            #DC2626, 
+            #6B7280, 
+            #B91C1C  
           );
           background-size: 200% auto;
           animation: heroShine 6s linear infinite;
@@ -115,9 +115,9 @@ const App = () => {
           height: 1000px;
           background: conic-gradient(
             from 0deg,
-            rgba(255,0,0,0.1),
-            rgba(0,0,255,0.1),
-            rgba(255,0,0,0.1)
+            rgba(185, 28, 28, 0.15), 
+            rgba(75, 85, 99, 0.15),  
+            rgba(185, 28, 28, 0.15) 
           );
           clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
           animation: pulse 4s ease-in-out infinite;
@@ -130,7 +130,7 @@ const App = () => {
           transform: translate(-50%, -50%);
           width: 1200px;
           height: 1200px;
-          border: 2px solid rgba(255,255,255,0.1);
+          border: 2px solid rgba(156, 163, 175, 0.2); 
           clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
           animation: octoSpin 20s linear infinite;
         }
@@ -142,8 +142,8 @@ const App = () => {
           right: 0;
           bottom: 0;
           background: 
-            radial-gradient(circle at 30% 30%, rgba(255,0,0,0.1) 0%, transparent 50%),
-            radial-gradient(circle at 70% 70%, rgba(0,0,255,0.1) 0%, transparent 50%);
+            radial-gradient(circle at 30% 30%, rgba(185, 28, 28, 0.15) 0%, transparent 50%), 
+            radial-gradient(circle at 70% 70%, rgba(75, 85, 99, 0.15) 0%, transparent 50%); 
           animation: pulse 6s ease-in-out infinite alternate;
         }
 
@@ -152,17 +152,33 @@ const App = () => {
           inset: 0;
           background-image: 
             repeating-linear-gradient(90deg, 
-              rgba(255,255,255,0.03) 0px,
-              rgba(255,255,255,0.03) 1px,
+              rgba(255,255,255,0.05) 0px, 
+              rgba(255,255,255,0.05) 1px,
               transparent 1px,
               transparent 30px
             ),
             repeating-linear-gradient(0deg,
-              rgba(255,255,255,0.03) 0px,
-              rgba(255,255,255,0.03) 1px,
+              rgba(255,255,255,0.05) 0px, 
+              rgba(255,255,255,0.05) 1px,
               transparent 1px,
               transparent 30px
             );
+          /* Add a subtle noise texture overlay */
+          background-image: 
+            url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"),
+            repeating-linear-gradient(90deg, 
+              rgba(255,255,255,0.05) 0px, 
+              rgba(255,255,255,0.05) 1px,
+              transparent 1px,
+              transparent 30px
+            ),
+            repeating-linear-gradient(0deg,
+              rgba(255,255,255,0.05) 0px, 
+              rgba(255,255,255,0.05) 1px,
+              transparent 1px,
+              transparent 30px
+            );
+          opacity: 0.5; /* Make texture subtle */
         }
 
         .float-animation {
@@ -200,16 +216,20 @@ const App = () => {
         .stats-card {
           background: linear-gradient(
             135deg,
-            rgba(23,23,23,0.95),
-            rgba(38,38,38,0.95)
+            rgba(17, 17, 17, 0.95), 
+            rgba(30, 30, 30, 0.95)  
           );
+          /* Add a subtle inner border */
+          border: 1px solid rgba(255, 255, 255, 0.05);
           box-shadow: 
             0 0 20px rgba(0,0,0,0.3),
             inset 0 0 20px rgba(255,255,255,0.05);
         }
 
         .command-card {
-          background: rgba(23,23,23,0.95);
+          background: rgba(17, 17, 17, 0.95); 
+          /* Add a subtle inner border */
+          border: 1px solid rgba(255, 255, 255, 0.05);
           box-shadow: 
             0 0 15px rgba(0,0,0,0.2),
             inset 0 0 10px rgba(255,255,255,0.03);
@@ -240,8 +260,8 @@ const App = () => {
           height: 100%;
           background: linear-gradient(
             45deg,
-            rgba(255,0,0,0.2),
-            rgba(0,0,255,0.2)
+            rgba(185, 28, 28, 0.3), 
+            rgba(75, 85, 99, 0.3)   
           );
           z-index: -1;
           transition: all 0.3s ease;
@@ -264,7 +284,7 @@ const App = () => {
           content: '';
           position: absolute;
           inset: -1px;
-          background: linear-gradient(45deg, #ff0000, #0000ff);
+          background: linear-gradient(45deg, #DC2626, #6B7280); 
           z-index: -1;
           filter: blur(8px);
           opacity: 0;
@@ -290,13 +310,15 @@ const App = () => {
         <Route
           path="/"
           element={
-            <div className="min-h-screen bg-gray-950 text-white overflow-hidden relative">
+            
+            <div className="min-h-screen bg-black text-white overflow-hidden relative"> 
               <div className="absolute inset-0">
                 <div className="energy-field" />
                 <div className="octagon-arena" />
                 <div className="octagon-border" />
                 <div className="cage-texture" />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-950/90 to-gray-950" />
+                
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/90 to-black" />
               </div>
 
               <div className="relative min-h-screen flex flex-col">
@@ -330,9 +352,10 @@ const App = () => {
                   </div>
 
                   {/* CTA Button */}
+                  
                   <a
                     href={CONFIG.links.discordInvite}
-                    className="cta-button px-8 py-4 bg-gradient-to-r from-red-600 to-blue-600 rounded-xl font-bold text-xl shadow-lg transform hover:scale-105 transition-all duration-300"
+                    className="cta-button px-8 py-4 bg-gradient-to-r from-red-700 to-gray-600 rounded-xl font-bold text-xl shadow-lg transform hover:scale-105 transition-all duration-300"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -347,10 +370,11 @@ const App = () => {
                     {Object.entries(CONFIG.stats).map(([key, model]) => (
                       <div key={key} className="relative group transform hover:scale-105 transition-all duration-300 glow-effect">
                         <div className="relative p-6 stats-card rounded-xl border border-gray-800 backdrop-blur flex flex-col items-center card">
+                          
                           {key === "gpt" ? (
-                            <Brain className="w-12 h-12 text-red-400 mb-4" />
+                            <Brain className="w-12 h-12 text-red-500 mb-4" /> 
                           ) : (
-                            <Bot className="w-12 h-12 text-blue-400 mb-4" />
+                            <Bot className="w-12 h-12 text-gray-400 mb-4" /> 
                           )}
                           <div className="text-2xl font-bold mb-2 text-gray-100">
                             {model.name}
@@ -383,7 +407,8 @@ const App = () => {
                             </div>
                             <div className="flex-1">
                               <div className="flex items-center justify-between mb-2">
-                                <code className="text-sm px-3 py-1 rounded-lg bg-gray-800 text-red-400 font-mono">
+                                
+                                <code className="text-sm px-3 py-1 rounded-lg bg-gray-800 text-red-500 font-mono"> 
                                   {cmd.command}
                                 </code>
                                 <span className="text-xs text-gray-500 px-3 py-1 rounded-full bg-gray-800/50">
