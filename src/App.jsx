@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react"; // Import useState and useEffect
 import { Routes, Route, Link } from 'react-router-dom';
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx';
 import TermsofService from './pages/TermsofService.jsx';
+import ImageGallery from './pages/ImageGallery.jsx'; // Import the new gallery component
+import { BACKGROUND_IMAGES } from './utils/imageLoader.js'; // Import dynamic image list
 import {
   Brain,
   Bot,
   ArrowRight,
   BookOpen,
   Twitter,
+  Heart, // Added Heart icon
 } from "lucide-react";
 
 const CONFIG = {
@@ -23,7 +26,7 @@ const CONFIG = {
       winRate: 61.3,
     },
     claude: {
-      name: "Claude-3.5",
+      name: "Claude-3.7",
       wins: 200,
       totalFights: 340,
       winRate: 58.8,
@@ -60,9 +63,37 @@ const COMMANDS = [
     emoji: "👤",
     category: "Analysis",
   },
+  {
+    command: "$donate",
+    description: "Support Fight Genie's development and server costs",
+    emoji: "💖", // Using a heart emoji
+    category: "Support",
+  },
 ];
 
+// Data for Double Lock Performance Stats (Manually update weekly)
+const DOUBLE_LOCK_STATS = {
+  accuracy: 63.2, // Percentage
+  wins: 12,
+  total: 19,
+};
+
+// Removed hardcoded BACKGROUND_IMAGES array, it's now imported from imageLoader.js
+
 const App = () => {
+  // State for cycling background image index
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+
+  // Effect to change background image every 5 seconds
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentBgIndex((prevIndex) => (prevIndex + 1) % BACKGROUND_IMAGES.length);
+    }, 5000); // Change image every 5000ms (5 seconds)
+
+    // Cleanup function to clear the interval when the component unmounts
+    return () => clearInterval(intervalId);
+  }, []); // Empty dependency array means this effect runs only once on mount
+
   return (
     <div className="relative">
       <style>{`
@@ -304,25 +335,70 @@ const App = () => {
             animation: none;
           }
         }
+
+        /* Styles for the cycling background */
+        .background-container {
+          position: fixed;
+          inset: 0;
+          z-index: -10; /* Ensure it's behind everything */
+          overflow: hidden;
+        }
+
+        .background-image {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover; /* Cover the area, cropping if needed */
+          opacity: 0;
+          transition: opacity 1s ease-in-out; /* Fade transition */
+        }
+
+        .background-image.visible {
+          opacity: 1;
+        }
+
+        .background-overlay {
+          position: fixed;
+          inset: 0;
+          background-color: rgba(0, 0, 0, 0.85); /* Increased opacity for better readability */
+          z-index: -9; /* Above background images, below content */
+        }
+
       `}</style>
+
+      {/* Background Image Container */}
+      <div className="background-container">
+        {BACKGROUND_IMAGES.map((src, index) => (
+          <img
+            key={src}
+            src={src}
+            alt="" // Alt text is empty as it's decorative
+            className={`background-image ${index === currentBgIndex ? 'visible' : ''}`}
+            loading="lazy" // Lazy load images
+          />
+        ))}
+      </div>
+      <div className="background-overlay"></div>
+
 
       <Routes>
         <Route
           path="/"
           element={
             
-            <div className="min-h-screen bg-black text-white overflow-hidden relative"> 
-              <div className="absolute inset-0">
-                <div className="energy-field" />
-                <div className="octagon-arena" />
-                <div className="octagon-border" />
-                <div className="cage-texture" />
-                
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/90 to-black" />
-              </div>
+            <div className="min-h-screen bg-transparent text-white overflow-hidden relative"> {/* Changed bg-black to bg-transparent */}
+              {/* Removed previous background effects container */}
+              {/* <div className="absolute inset-0"> */}
+                {/* Removed energy-field, octagon-arena, octagon-border, cage-texture */}
+                {/* Optional: Keep a subtle gradient overlay if needed */}
+                {/* <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black/80" /> */}
+              {/* </div> */}
 
-              <div className="relative min-h-screen flex flex-col">
-                <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col items-center justify-center space-y-12">
+              {/* Ensure content is relatively positioned to appear above the background */}
+              {/* Added subtle gradient background and increased vertical spacing */}
+              <div className="relative min-h-screen flex flex-col z-10 bg-gradient-to-b from-black/10 via-black/30 to-black/50"> 
+                <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex flex-col items-center justify-center space-y-16"> {/* Increased py and space-y */}
                   {/* Logo Section */}
                   <a
                     href={CONFIG.links.discordInvite}
@@ -339,23 +415,22 @@ const App = () => {
                   </a>
 
                   {/* Hero Section */}
-                  <div className="text-center space-y-6 max-w-3xl">
-                    <h1 className="text-6xl font-bold hero-gradient leading-tight">
+                  <div className="text-center space-y-4 max-w-3xl"> {/* Reduced space-y */}
+                    <h1 className="text-5xl md:text-6xl font-bold hero-gradient leading-tight"> {/* Responsive text size */}
                       Fight Genie Discord Bot
                     </h1>
-                    <p className="text-2xl text-gray-300">
+                    <p className="text-xl md:text-2xl text-gray-300"> {/* Responsive text size */}
                       Free AI-Powered UFC Predictions and Analysis
                     </p>
-                    <p className="text-xl text-gray-400">
-                      Featuring GPT-4o and Claude-3.5
+                    <p className="text-lg md:text-xl text-gray-400"> {/* Responsive text size */}
+                      Featuring {CONFIG.stats.gpt.name} and {CONFIG.stats.claude.name} {/* Dynamic model names */}
                     </p>
                   </div>
 
                   {/* CTA Button */}
-                  
                   <a
                     href={CONFIG.links.discordInvite}
-                    className="cta-button px-8 py-4 bg-gradient-to-r from-red-700 to-gray-600 rounded-xl font-bold text-xl shadow-lg transform hover:scale-105 transition-all duration-300"
+                    className="cta-button px-8 py-4 bg-gradient-to-r from-red-600 to-gray-700 rounded-lg font-semibold text-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300" /* Adjusted styles */
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -366,56 +441,81 @@ const App = () => {
                   </a>
 
                   {/* AI Models Performance */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+                  <div className="w-full max-w-4xl">
+                    <h2 className="text-3xl font-bold text-center mb-8 hero-gradient"> {/* Consistent heading */}
+                      AI Model Performance
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {Object.entries(CONFIG.stats).map(([key, model]) => (
                       <div key={key} className="relative group transform hover:scale-105 transition-all duration-300 glow-effect">
-                        <div className="relative p-6 stats-card rounded-xl border border-gray-800 backdrop-blur flex flex-col items-center card">
-                          
+                        {/* Adjusted card styling */}
+                        <div className="relative p-6 stats-card rounded-lg border border-gray-700 backdrop-blur flex flex-col items-center card"> 
                           {key === "gpt" ? (
-                            <Brain className="w-12 h-12 text-red-500 mb-4" /> 
+                            <Brain className="w-10 h-10 text-red-500 mb-3" /> /* Slightly smaller icon */
                           ) : (
-                            <Bot className="w-12 h-12 text-gray-400 mb-4" /> 
+                            <Bot className="w-10 h-10 text-gray-400 mb-3" /> /* Slightly smaller icon */
                           )}
-                          <div className="text-2xl font-bold mb-2 text-gray-100">
+                          <div className="text-xl font-semibold mb-1 text-gray-100"> {/* Adjusted text size/weight */}
                             {model.name}
                           </div>
-                          <div className="text-4xl font-bold hero-gradient">
-                            {model.winRate}%
+                          <div className="text-3xl font-bold hero-gradient mb-1"> {/* Adjusted text size */}
+                            {model.winRate.toFixed(1)}% {/* Ensure one decimal place */}
                           </div>
-                          <div className="text-gray-400 mt-2">
-                            {model.wins}/{model.totalFights} Predictions
+                          <div className="text-sm text-gray-400"> {/* Adjusted text size */}
+                            {model.wins} Wins / {model.totalFights} Fights
                           </div>
                         </div>
                       </div>
                     ))}
+                    </div>
+                  </div>
+
+                  {/* Double Lock Performance Section (Moved Here) */}
+                  <div className="w-full max-w-md mx-auto"> {/* Centered and constrained width */}
+                    <h2 className="text-3xl font-bold text-center mb-8 hero-gradient"> {/* Consistent heading */}
+                      Double Lock Performance 🔒
+                    </h2>
+                    <div className="relative group transform hover:scale-105 transition-all duration-300 glow-effect">
+                       {/* Adjusted card styling */}
+                       <div className="relative p-6 stats-card rounded-lg border border-yellow-600/60 backdrop-blur flex flex-col items-center card bg-gradient-to-br from-gray-900 via-yellow-900/10 to-black">
+                         <div className="text-3xl font-bold text-yellow-400 mb-1"> {/* Adjusted text size */}
+                           {DOUBLE_LOCK_STATS.accuracy.toFixed(1)}%
+                         </div>
+                         <div className="text-base text-gray-300 mb-2"> {/* Adjusted text size */}
+                           Accuracy ({DOUBLE_LOCK_STATS.wins} Wins / {DOUBLE_LOCK_STATS.total} Fights)
+                         </div>
+                         <p className="text-xs text-gray-500 text-center">
+                           (Fights where BOTH models predict the same winner with ≥ 75% confidence) {/* Using ≥ symbol */}
+                         </p>
+                       </div>
+                     </div>
                   </div>
 
                   {/* Commands Section */}
                   <div className="w-full max-w-4xl">
-                    <h2 className="text-3xl font-bold text-center mb-8 hero-gradient">
+                    <h2 className="text-3xl font-bold text-center mb-8 hero-gradient"> {/* Consistent heading */}
                       Bot Commands
                     </h2>
-                    <div className="grid gap-4">
+                    <div className="grid gap-4 md:gap-5"> {/* Slightly larger gap on medium screens */}
                       {COMMANDS.map((cmd) => (
                         <div
                           key={cmd.command}
-                          className="command-card p-4 rounded-xl border border-gray-800 card"
+                          className="command-card p-4 rounded-lg border border-gray-700 card" /* Adjusted styles */
                         >
                           <div className="flex items-center space-x-4">
-                            <div className="w-12 h-12 rounded-lg bg-gray-800 flex items-center justify-center text-2xl">
+                            <div className="w-10 h-10 rounded-md bg-gray-700 flex items-center justify-center text-xl"> {/* Adjusted size/shape */}
                               {cmd.emoji}
                             </div>
                             <div className="flex-1">
-                              <div className="flex items-center justify-between mb-2">
-                                
-                                <code className="text-sm px-3 py-1 rounded-lg bg-gray-800 text-red-500 font-mono"> 
+                              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1"> {/* Responsive layout */}
+                                <code className="text-sm px-2 py-0.5 rounded bg-gray-700 text-red-400 font-mono mb-1 sm:mb-0"> {/* Adjusted styles */}
                                   {cmd.command}
                                 </code>
-                                <span className="text-xs text-gray-500 px-3 py-1 rounded-full bg-gray-800/50">
+                                <span className="text-xs text-gray-500 px-2 py-0.5 rounded-full bg-gray-800/60 self-start sm:self-center"> {/* Adjusted styles */}
                                   {cmd.category}
                                 </span>
                               </div>
-                              <p className="text-gray-400">{cmd.description}</p>
+                              <p className="text-sm text-gray-400">{cmd.description}</p> {/* Adjusted text size */}
                             </div>
                           </div>
                         </div>
@@ -423,37 +523,70 @@ const App = () => {
                     </div>
                   </div>
 
+                  {/* Donation Section */}
+                  <div className="w-full max-w-2xl mx-auto"> 
+                    <h2 className="text-3xl font-bold text-center mb-8 hero-gradient"> {/* Consistent heading */}
+                      Support Fight Genie <Heart className="inline-block w-6 h-6 text-red-500 mb-1" /> {/* Adjusted size */}
+                    </h2>
+                    <div className="relative group transform hover:scale-105 transition-all duration-300 glow-effect">
+                      {/* Adjusted card styling */}
+                      <div className="relative p-6 stats-card rounded-lg border border-red-600/60 backdrop-blur flex flex-col items-center card bg-gradient-to-br from-gray-900 via-red-900/10 to-black">
+                        <p className="text-base md:text-lg text-gray-300 text-center mb-5"> {/* Responsive text size */}
+                          Fight Genie is a free Discord bot run by a solo developer. Your donations help cover server costs and fuel future updates! {/* Slightly rephrased */}
+                        </p>
+                        <a
+                          href="https://www.paypal.com/donate/?hosted_button_id=2JF3LZ77YEBEE"
+                          className="cta-button px-6 py-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg font-semibold text-base text-black shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300" /* Adjusted styles */
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Support via PayPal
+                        </a>
+                        <p className="text-xs text-gray-500 mt-4 text-center"> {/* Increased margin-top */}
+                          Every contribution makes a difference!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+
                   {/* Footer Links */}
-                  <div className="flex items-center space-x-8">
+                  <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-3 mt-16 text-sm"> {/* Responsive links, increased margin-top */}
                     <a
                       href={CONFIG.social.blog}
-                      className="group flex items-center space-x-2 text-gray-400 hover:text-gray-200 transition-colors"
+                      className="group flex items-center space-x-1.5 text-gray-400 hover:text-red-400 transition-colors" /* Adjusted hover color */
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <BookOpen className="w-5 h-5" />
+                      <BookOpen className="w-4 h-4" /> {/* Smaller icon */}
                       <span>Learn More</span>
                     </a>
                     <a
                       href={CONFIG.social.twitter}
-                      className="group flex items-center space-x-2 text-gray-400 hover:text-gray-200 transition-colors"
+                      className="group flex items-center space-x-1.5 text-gray-400 hover:text-red-400 transition-colors" /* Adjusted hover color */
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Twitter className="w-5 h-5" />
-                      <span>@FightGenieAI</span>
+                      <Twitter className="w-4 h-4" /> {/* Smaller icon */}
+                      <span>Follow @Fight_Genie</span> {/* Updated text */}
                     </a>
                     <Link
                       to="/privacy"
-                      className="text-gray-400 hover:text-gray-200 transition-colors"
+                      className="text-gray-400 hover:text-red-400 transition-colors" /* Adjusted hover color */
                     >
                       Privacy Policy
                     </Link>
                     <Link
                       to="/terms"
-                      className="text-gray-400 hover:text-gray-200 transition-colors"
+                      className="text-gray-400 hover:text-red-400 transition-colors" /* Adjusted hover color */
                     >
                       Terms of Service
+                    </Link>
+                    <Link
+                      to="/gallery"
+                      className="text-gray-400 hover:text-red-400 transition-colors" /* Adjusted hover color */
+                    >
+                      Gallery
                     </Link>
                   </div>
                 </main>
@@ -467,6 +600,8 @@ const App = () => {
         />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsofService />} />
+        {/* Add Gallery Route */}
+        <Route path="/gallery" element={<ImageGallery />} /> 
       </Routes>
     </div>
   );
