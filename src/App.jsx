@@ -21,15 +21,15 @@ const CONFIG = {
   stats: {
     gpt: {
       name: "GPT-4o",
-      wins: 214,
-      totalFights: 353,
-      winRate: 60.6,
+      wins: 221,
+      totalFights: 365,
+      winRate: 60.5,
     },
     claude: {
       name: "Claude-3.7",
-      wins: 206,
-      totalFights: 352,
-      winRate: 58.5,
+      wins: 212,
+      totalFights: 364,
+      winRate: 58.2,
     },
   },
   links: {
@@ -73,9 +73,9 @@ const COMMANDS = [
 
 // Data for Double Lock Performance Stats (Manually update weekly)
 const DOUBLE_LOCK_STATS = {
-  accuracy: 60.0, // Percentage
+  accuracy: 57.1, // Percentage
   wins: 12,
-  total: 20,
+  total: 22,
 };
 
 // Removed hardcoded BACKGROUND_IMAGES array, it's now imported from imageLoader.js
