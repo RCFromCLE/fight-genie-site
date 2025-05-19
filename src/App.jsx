@@ -21,15 +21,15 @@ const CONFIG = {
   stats: {
     gpt: {
       name: "GPT-4o",
-      wins: 221,
-      totalFights: 365,
-      winRate: 60.5,
+      wins: 229,
+      totalFights: 375,
+      winRate: 61.1,
     },
     claude: {
       name: "Claude-3.7",
-      wins: 212,
-      totalFights: 364,
-      winRate: 58.2,
+      wins: 222,
+      totalFights: 374,
+      winRate: 59.4,
     },
   },
   links: {
@@ -75,7 +75,7 @@ const COMMANDS = [
 const DOUBLE_LOCK_STATS = {
   accuracy: 57.1, // Percentage
   wins: 12,
-  total: 22,
+  total: 21,
 };
 
 // Removed hardcoded BACKGROUND_IMAGES array, it's now imported from imageLoader.js
