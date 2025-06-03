@@ -21,15 +21,15 @@ const CONFIG = {
   stats: {
     gpt: {
       name: "GPT-4o",
-      wins: 229,
-      totalFights: 375,
-      winRate: 61.1,
+      wins: 247,
+      totalFights: 399,
+      winRate: 61.9,
     },
     claude: {
       name: "Claude-3.7",
-      wins: 222,
-      totalFights: 374,
-      winRate: 59.4,
+      wins: 226,
+      totalFights: 381,
+      winRate: 59.3,
     },
   },
   links: {
