@@ -26,7 +26,7 @@ const CONFIG = {
       winRate: 62.6,
     },
     claude: {
-      name: "Claude-3.7",
+      name: "Claude-4",
       wins: 257,
       totalFights: 429,
       winRate: 59.9,
