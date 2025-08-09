@@ -4,20 +4,28 @@
 
 @layer base {
   :root {
-    --genie-primary: 79 70 229;
-    --genie-secondary: 129 140 248;
-    --genie-dark: 17 24 39;
+    --genie-primary: 239 68 68;
+    --genie-secondary: 251 191 36;
+    --genie-dark: 10 10 10;
     --discord: 88 101 242;
-    --solana: 20 241 149;
+    --success: 34 197 94;
   }
 
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    /* Use the new dark background and light text colors */
-    @apply bg-dark-bg text-light-text font-[Inter];
+    @apply bg-dark-bg text-light-text font-sans;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(239, 68, 68, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(251, 191, 36, 0.03) 0%, transparent 50%);
+  }
+
+  ::selection {
+    @apply bg-primary-red/30 text-light-text;
   }
 }
 
@@ -50,39 +58,58 @@
   }
 }
 
-/* Custom Scrollbar - Updated with new theme colors */
+/* Premium Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px; /* Slightly thinner */
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-dark-bg; /* Use the darkest background */
+  @apply bg-dark-bg;
 }
 
 ::-webkit-scrollbar-thumb {
-  /* Use the red accent or a dark gray */
-  @apply bg-primary-red/80 rounded hover:bg-primary-red;
-  /* Alternative: @apply bg-accent-gray/80 rounded hover:bg-accent-gray; */
+  @apply bg-gradient-to-b from-primary-red to-primary-red/60 rounded-full;
+  border: 2px solid rgb(10, 10, 10);
 }
 
-/* Keep simple animations if desired, remove if not */
-/* .fade-in { */
-  /* animation: fadeIn 0.5s ease-in; */
-/* } */
+::-webkit-scrollbar-thumb:hover {
+  @apply from-primary-red to-primary-red/80;
+}
 
-/* .slide-up { */
-  /* animation: slideUp 0.5s ease-out; */
-/* } */
+/* Premium Animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-/* @keyframes fadeIn { */
-  /* from { opacity: 0; } */
-  /* to { opacity: 1; } */
-/* } */
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-/* @keyframes slideUp { */
-  /* from { transform: translateY(20px); opacity: 0; } */
-  /* to { transform: translateY(0); opacity: 1; } */
-/* } */
+/* Glass effect for cards */
+.glass-effect {
+  @apply backdrop-blur-md bg-content-bg/80;
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.8) 0%, rgba(20, 20, 20, 0.6) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Neon glow effect */
+.neon-glow {
+  text-shadow: 
+    0 0 10px rgba(239, 68, 68, 0.8),
+    0 0 20px rgba(239, 68, 68, 0.6),
+    0 0 30px rgba(239, 68, 68, 0.4);
+}
+
+/* Champion gold glow */
+.gold-glow {
+  text-shadow: 
+    0 0 10px rgba(251, 191, 36, 0.8),
+    0 0 20px rgba(251, 191, 36, 0.6);
+}
 
 /* Remove old card hover effects and styles - will be handled by Tailwind in App.jsx */
 /* .stat-card { */
