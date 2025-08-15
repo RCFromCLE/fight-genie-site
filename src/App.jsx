@@ -27,24 +27,24 @@ const CONFIG = {
   stats: {
     gpt: {
       name: "GPT-4o",
-      eventsAnalyzed: 39,        // Total UFC events analyzed
-      totalFights: 497,           // Total fights predicted
-      wins: 310,                  // Correct predictions
-      winRate: 62.4,              // Win percentage (wins/totalFights * 100)
-      lockRate: 70.3,             // Percentage of locks (≥75% confidence) that were correct
-      lockRateDetails: { correct: 71, total: 101 }, // Lock stats breakdown
-      methodAccuracy: 29.8,       // Accuracy of predicted finish method
-      avgConfidence: 68.3,        // Average prediction confidence
+      eventsAnalyzed: 40,        // Total UFC events analyzed
+      totalFights: 509,           // Total fights predicted
+      wins: 318,                  // Correct predictions
+      winRate: 62.5,              // Win percentage (wins/totalFights * 100)
+      lockRate: 70.5,             // Percentage of locks (≥75% confidence) that were correct
+      lockRateDetails: { correct: 74, total: 105 }, // Lock stats breakdown
+      methodAccuracy: 30.1,       // Accuracy of predicted finish method
+      avgConfidence: 68.4,        // Average prediction confidence
     },
     claude: {
       name: "Claude-4",
-      eventsAnalyzed: 40,         // Total UFC events analyzed
-      totalFights: 489,           // Total fights predicted
-      wins: 296,                  // Correct predictions
-      winRate: 60.5,              // Win percentage (wins/totalFights * 100)
-      lockRate: 65.9,             // Percentage of locks (≥75% confidence) that were correct
-      lockRateDetails: { correct: 58, total: 88 }, // Lock stats breakdown
-      methodAccuracy: 28.4,       // Accuracy of predicted finish method
+      eventsAnalyzed: 41,         // Total UFC events analyzed
+      totalFights: 501,           // Total fights predicted
+      wins: 305,                  // Correct predictions
+      winRate: 60.9,              // Win percentage (wins/totalFights * 100)
+      lockRate: 66.3,             // Percentage of locks (≥75% confidence) that were correct
+      lockRateDetails: { correct: 59, total: 89 }, // Lock stats breakdown
+      methodAccuracy: 28.9,       // Accuracy of predicted finish method
       avgConfidence: 67.4,        // Average prediction confidence
     },
   },
