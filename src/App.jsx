@@ -27,31 +27,31 @@ const CONFIG = {
   stats: {
     gpt: {
       name: "GPT-4o",
-      eventsAnalyzed: 40,        // Total UFC events analyzed
-      totalFights: 509,           // Total fights predicted
-      wins: 318,                  // Correct predictions
+      eventsAnalyzed: 43,        // Total UFC events analyzed
+      totalFights: 544,           // Total fights predicted
+      wins: 340,                  // Correct predictions
       winRate: 62.5,              // Win percentage (wins/totalFights * 100)
-      lockRate: 70.5,             // Percentage of locks (≥75% confidence) that were correct
-      lockRateDetails: { correct: 74, total: 105 }, // Lock stats breakdown
-      methodAccuracy: 30.1,       // Accuracy of predicted finish method
+      lockRate: 72.1,             // Percentage of locks (≥75% confidence) that were correct
+      lockRateDetails: { correct: 80, total: 111 }, // Lock stats breakdown
+      methodAccuracy: 29.8,       // Accuracy of predicted finish method
       avgConfidence: 68.4,        // Average prediction confidence
     },
     claude: {
       name: "Claude-4",
-      eventsAnalyzed: 41,         // Total UFC events analyzed
-      totalFights: 501,           // Total fights predicted
-      wins: 305,                  // Correct predictions
-      winRate: 60.9,              // Win percentage (wins/totalFights * 100)
-      lockRate: 66.3,             // Percentage of locks (≥75% confidence) that were correct
-      lockRateDetails: { correct: 59, total: 89 }, // Lock stats breakdown
-      methodAccuracy: 28.9,       // Accuracy of predicted finish method
+      eventsAnalyzed: 43,         // Total UFC events analyzed
+      totalFights: 520,           // Total fights predicted
+      wins: 315,                  // Correct predictions
+      winRate: 60.6,              // Win percentage (wins/totalFights * 100)
+      lockRate: 65.6,             // Percentage of locks (≥75% confidence) that were correct
+      lockRateDetails: { correct: 59, total: 90 }, // Lock stats breakdown
+      methodAccuracy: 28.7,       // Accuracy of predicted finish method
       avgConfidence: 67.4,        // Average prediction confidence
     },
   },
   doubleLock: {
-    accuracy: 65.5,               // When both models agree with ≥75% confidence
-    correct: 19,                  // Correct double lock predictions
-    total: 29,                    // Total double lock predictions
+    accuracy: 66.7,               // When both models agree with ≥75% confidence
+    correct: 20,                  // Correct double lock predictions
+    total: 30,                    // Total double lock predictions
   },
   links: {
     discordInvite: "https://discord.com/oauth2/authorize?client_id=1297251219374604388",
