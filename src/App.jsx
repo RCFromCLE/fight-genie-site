@@ -26,31 +26,31 @@ const CONFIG = {
   },
   stats: {
     gpt: {
-      name: "GPT-4o",
+      name: "GPT-5",
       eventsAnalyzed: 44,        // Total UFC events analyzed
-      totalFights: 557,           // Total fights predicted
+      totalFights: 558,           // Total fights predicted
       wins: 346,                  // Correct predictions
-      winRate: 62.1,              // Win percentage (wins/totalFights * 100)
-      lockRate: 72.2,             // Percentage of locks (≥75% confidence) that were correct
-      lockRateDetails: { correct: 83, total: 115 }, // Lock stats breakdown
-      methodAccuracy: 29.4,       // Accuracy of predicted finish method
-      avgConfidence: 68.5,        // Average prediction confidence
+      winRate: 62.0,              // Win percentage (wins/totalFights * 100)
+      lockRate: 72.4,             // Percentage of locks (≥75% confidence) that were correct
+      lockRateDetails: { correct: 84, total: 116 }, // Lock stats breakdown
+      methodAccuracy: 29.7,       // Accuracy of predicted finish method
+      avgConfidence: 68.4,        // Average prediction confidence
     },
     claude: {
-      name: "Claude-4",
+      name: "Claude Sonnet 4",
       eventsAnalyzed: 44,         // Total UFC events analyzed
       totalFights: 533,           // Total fights predicted
-      wins: 321,                  // Correct predictions
-      winRate: 60.2,              // Win percentage (wins/totalFights * 100)
-      lockRate: 66.0,             // Percentage of locks (≥75% confidence) that were correct
-      lockRateDetails: { correct: 62, total: 94 }, // Lock stats breakdown
-      methodAccuracy: 28.3,       // Accuracy of predicted finish method
-      avgConfidence: 67.4,        // Average prediction confidence
+      wins: 324,                  // Correct predictions
+      winRate: 60.7,              // Win percentage (wins/totalFights * 100)
+      lockRate: 65.6,             // Percentage of locks (≥75% confidence) that were correct
+      lockRateDetails: { correct: 61, total: 93 }, // Lock stats breakdown
+      methodAccuracy: 28.7,       // Accuracy of predicted finish method
+      avgConfidence: 67.4,        // Average prediction confidencee
     },
   },
   doubleLock: {
-    accuracy: 68.8,               // When both models agree with ≥75% confidence
-    correct: 22,                  // Correct double lock predictions
+    accuracy: 65.6,               // When both models agree with ≥75% confidence
+    correct: 21,                  // Correct double lock predictions
     total: 32,                    // Total double lock predictions
   },
   links: {
