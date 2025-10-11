@@ -27,31 +27,31 @@ const CONFIG = {
   stats: {
     gpt: {
       name: "GPT-5",
-      eventsAnalyzed: 44,        // Total UFC events analyzed
-      totalFights: 558,           // Total fights predicted
-      wins: 346,                  // Correct predictions
-      winRate: 62.0,              // Win percentage (wins/totalFights * 100)
-      lockRate: 72.4,             // Percentage of locks (≥75% confidence) that were correct
-      lockRateDetails: { correct: 84, total: 116 }, // Lock stats breakdown
-      methodAccuracy: 29.7,       // Accuracy of predicted finish method
-      avgConfidence: 68.4,        // Average prediction confidence
+      eventsAnalyzed: 46,        // Total UFC events analyzed
+      totalFights: 583,           // Total fights predicted
+      wins: 361,                  // Correct predictions
+      winRate: 61.9,              // Win percentage (wins/totalFights * 100)
+      lockRate: 70.5,             // Percentage of locks (≥75% confidence) that were correct
+      lockRateDetails: { correct: 86, total: 122 }, // Lock stats breakdown
+      methodAccuracy: 30.2,       // Accuracy of predicted finish method
+      avgConfidence: 68.5,        // Average prediction confidence
     },
     claude: {
-      name: "Claude Sonnet 4",
-      eventsAnalyzed: 44,         // Total UFC events analyzed
-      totalFights: 533,           // Total fights predicted
-      wins: 324,                  // Correct predictions
-      winRate: 60.7,              // Win percentage (wins/totalFights * 100)
-      lockRate: 65.6,             // Percentage of locks (≥75% confidence) that were correct
-      lockRateDetails: { correct: 61, total: 93 }, // Lock stats breakdown
-      methodAccuracy: 28.7,       // Accuracy of predicted finish method
+      name: "Claude Sonnet 4.5",
+      eventsAnalyzed: 46,         // Total UFC events analyzed
+      totalFights: 559,           // Total fights predicted
+      wins: 338,                  // Correct predictions
+      winRate: 60.5,              // Win percentage (wins/totalFights * 100)
+      lockRate: 66,             // Percentage of locks (≥75% confidence) that were correct
+      lockRateDetails: { correct: 64, total: 97 }, // Lock stats breakdown
+      methodAccuracy: 29,       // Accuracy of predicted finish method
       avgConfidence: 67.4,        // Average prediction confidencee
     },
   },
   doubleLock: {
-    accuracy: 65.6,               // When both models agree with ≥75% confidence
-    correct: 21,                  // Correct double lock predictions
-    total: 32,                    // Total double lock predictions
+    accuracy: 64.7,               // When both models agree with ≥75% confidence
+    correct: 22,                  // Correct double lock predictions
+    total: 34,                    // Total double lock predictions
   },
   links: {
     discordInvite: "https://discord.com/oauth2/authorize?client_id=1297251219374604388",
