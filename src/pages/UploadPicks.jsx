@@ -8,13 +8,8 @@ const UploadPicks = () => {
   const [uploadStatus, setUploadStatus] = useState(null);
   const [error, setError] = useState('');
 
-  // Azure Blob Storage configuration from environment variables
-  const AZURE_SAS_URL = import.meta.env.VITE_AZURE_SAS_URL;
-
-  // Check if environment variable is set
-  if (!AZURE_SAS_URL) {
-    console.error('VITE_AZURE_SAS_URL environment variable is not set');
-  }
+  // GitHub token from environment variable
+  const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 
   const handleUpload = async (e) => {
     e.preventDefault();
@@ -29,7 +24,7 @@ const UploadPicks = () => {
     setUploadStatus(null);
 
     try {
-      if (!AZURE_SAS_URL) {
+      if (!GITHUB_TOKEN) {
         throw new Error('Upload configuration is missing. Please contact the administrator.');
       }
 
@@ -37,26 +32,34 @@ const UploadPicks = () => {
       const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
       const filename = `picks_${timestamp}.txt`;
       
-      // Upload to Azure Blob Storage
-      const uploadUrl = `${AZURE_SAS_URL.split('?')[0]}/${filename}?${AZURE_SAS_URL.split('?')[1]}`;
-      
-      const response = await fetch(uploadUrl, {
-        method: 'PUT',
+      // Create a GitHub Gist
+      const response = await fetch('https://api.github.com/gists', {
+        method: 'POST',
         headers: {
-          'x-ms-blob-type': 'BlockBlob',
-          'Content-Type': 'text/plain',
+          'Authorization': `token ${GITHUB_TOKEN}`,
+          'Content-Type': 'application/json',
         },
-        body: picksText,
+        body: JSON.stringify({
+          description: `Fight Picks - ${new Date().toLocaleString()}`,
+          public: false,
+          files: {
+            [filename]: {
+              content: picksText
+            }
+          }
+        }),
       });
 
       if (response.ok) {
+        const data = await response.json();
         setUploadStatus({
           type: 'success',
-          message: `Picks uploaded successfully as ${filename}!`,
+          message: `Picks uploaded successfully! Gist ID: ${data.id}`,
         });
         setPicksText('');
       } else {
-        throw new Error(`Upload failed with status: ${response.status}`);
+        const errorData = await response.json();
+        throw new Error(errorData.message || `Upload failed with status: ${response.status}`);
       }
     } catch (err) {
       setError(`Upload failed: ${err.message}`);
@@ -182,7 +185,7 @@ const UploadPicks = () => {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-primary-red mt-0.5">•</span>
-                <span>All uploads are stored securely in Azure Blob Storage</span>
+                <span>All uploads are stored as private GitHub Gists</span>
               </li>
             </ul>
           </div>
