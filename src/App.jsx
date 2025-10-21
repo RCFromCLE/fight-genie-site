@@ -15,10 +15,12 @@ import {
   Trophy,
   Crown,
   Zap,
+  TrendingUp,
+  Award,
 } from "lucide-react";
 
 // ============================================================
-// CONFIGURATION - Update these stats manually as needed
+// CONFIGURATION - Update these stats by providing screenshots
 // ============================================================
 const CONFIG = {
   social: {
@@ -27,32 +29,104 @@ const CONFIG = {
   },
   stats: {
     gpt: {
-      name: "GPT-5",
-      eventsAnalyzed: 46,        // Total UFC events analyzed
-      totalFights: 583,           // Total fights predicted
-      wins: 361,                  // Correct predictions
-      winRate: 61.9,              // Win percentage (wins/totalFights * 100)
-      lockRate: 70.5,             // Percentage of locks (≥75% confidence) that were correct
-      lockRateDetails: { correct: 86, total: 122 }, // Lock stats breakdown
-      methodAccuracy: 30.2,       // Accuracy of predicted finish method
-      avgConfidence: 68.5,        // Average prediction confidence
+      name: "GPT",
+      eventsAnalyzed: 50,
+      totalFights: 622,
+      wins: 374,
+      winRate: 60.1,
+      lockRate: 69.2,
+      lockRateDetails: { correct: 233, total: 333 },
+      methodAccuracy: 29.9,
+      avgConfidence: 68.6,
+      topEvents: [
+        { event: "UFC Fight Night: Edwards vs. Fiziev", record: "9/9 (4/4)", date: "3/21/2025" },
+        { event: "UFC 316: Dvalishvili vs. O'Malley 2", record: "9/9 (11/15)", date: "9/26/2025" },
+        { event: "UFC 317: Topuria vs. Oliveira", record: "9/9 (9/11)", date: "6/27/2025" },
+        { event: "UFC 309: Jones vs. Miocic", record: "8/9 (9/11)", date: "11/16/2024" },
+        { event: "UFC Fight Night: Burns vs. Morales", record: "8/9 (6/7)", date: "6/7/2025" },
+        { event: "UFC Fight Night: Machado Garry vs. Prates", record: "7/8 (11/14)", date: "4/25/2025" },
+        { event: "UFC Fight Night: Blanchfield vs. Barber", record: "7/8 (13/17)", date: "5/30/2025" },
+        { event: "UFC 319: Du Plessis vs. Chimaev", record: "7/8 (9/12)", date: "8/16/2025" },
+        { event: "UFC Fight Night: Canelo vs. Song", record: "7/8 (9/12)", date: "2/22/2025" },
+        { event: "UFC Fight Night: Dern vs. Ribas 2", record: "7/8 (6/8)", date: "1/10/2025" },
+      ],
+      topMainCardEvents: [
+        { event: "UFC 320: Ankalaev vs. Pereira 2", record: "5/5 (4/4)", date: "10/4/2025" },
+        { event: "UFC 316: Dvalishvili vs. O'Malley 2", record: "4/4 (4/4)", date: "9/26/2025" },
+        { event: "UFC Fight Night: Ulanbekov vs. Reyes", record: "4/4 (6/8)", date: "9/26/2025" },
+        { event: "UFC Fight Night: Dariush vs. Gamrot 2", record: "4/4 (6/8)", date: "6/6/2025" },
+        { event: "UFC 316: Dvalishvili vs. O'Malley 2", record: "4/4 (4/4)", date: "4/26/2025" },
+        { event: "UFC Fight Night: Blanchfield vs. Barber", record: "4/5 (5/6)", date: "5/30/2025" },
+        { event: "UFC Fight Night: Edwards vs. Fiziev", record: "4/4 (4/4)", date: "3/21/2025" },
+        { event: "UFC Fight Night: Edwards vs. Brady", record: "4/4 (4/4)", date: "3/21/2025" },
+        { event: "UFC Fight Night: Canelo vs. Song", record: "4/4 (4/4)", date: "2/22/2025" },
+        { event: "UFC 309: Jones vs. Miocic", record: "4/5 (4/5)", date: "11/16/2024" },
+      ],
+      topPrelimsEvents: [
+        { event: "UFC Fight Night: Burns vs. Morales", record: "9/9 (7/8)", date: "6/7/2025" },
+        { event: "UFC 309: Jones vs. Miocic", record: "8/9 (5/6)", date: "11/15/2024" },
+        { event: "UFC 317: Topuria vs. Oliveira", record: "8/9 (5/6)", date: "6/27/2025" },
+        { event: "UFC Fight Night: Kape vs. Albazi", record: "8/9 (5/6)", date: "2/28/2025" },
+        { event: "UFC Fight Night: Machado Garry vs. Prates", record: "7/8 (6/7)", date: "4/25/2025" },
+        { event: "UFC 310: Pantoja vs. Asakura", record: "7/8 (6/7)", date: "12/6/2024" },
+        { event: "UFC 314: Volkanovski vs. Lopes", record: "7/8 (7/9)", date: "4/11/2025" },
+        { event: "UFC Fight Night: Blanchfield vs. Barber", record: "8/9 (8/11)", date: "5/30/2025" },
+        { event: "UFC 309: Jones vs. Miocic", record: "7/7 (5/6)", date: "11/15/2024" },
+        { event: "UFC Fight Night: Oliveira vs. Tsarukyan", record: "7/7 (5/6)", date: "3/28/2025" },
+      ],
     },
     claude: {
       name: "Claude Sonnet 4.5",
-      eventsAnalyzed: 46,         // Total UFC events analyzed
-      totalFights: 559,           // Total fights predicted
-      wins: 338,                  // Correct predictions
-      winRate: 60.5,              // Win percentage (wins/totalFights * 100)
-      lockRate: 66,             // Percentage of locks (≥75% confidence) that were correct
-      lockRateDetails: { correct: 64, total: 97 }, // Lock stats breakdown
-      methodAccuracy: 29,       // Accuracy of predicted finish method
-      avgConfidence: 67.4,        // Average prediction confidencee
+      eventsAnalyzed: 50,
+      totalFights: 618,
+      wins: 363,
+      winRate: 58.7,
+      lockRate: 65.7,
+      lockRateDetails: { correct: 71, total: 108 },
+      methodAccuracy: 27.7,
+      avgConfidence: 67.5,
+      topEvents: [
+        { event: "UFC Fight Night: Burns vs. Morales", record: "10/10 (7/7)", date: "5/16/2025" },
+        { event: "UFC 309: Jones vs. Miocic", record: "9/9 (10/11)", date: "11/15/2024" },
+        { event: "UFC 317: Topuria vs. Oliveira", record: "9/9 (9/11)", date: "6/27/2025" },
+        { event: "UFC Fight Night: Kape vs. Albazi", record: "9/9 (5/6)", date: "2/28/2025" },
+        { event: "UFC Fight Night: Machado Garry vs. Prates", record: "7/8 (10/11)", date: "4/25/2025" },
+        { event: "UFC 310: Pantoja vs. Asakura", record: "7/8 (8/9)", date: "12/6/2024" },
+        { event: "UFC 314: Volkanovski vs. Lopes", record: "7/8 (7/9)", date: "4/11/2025" },
+        { event: "UFC Fight Night: Moreno vs. Erceg", record: "9/10 (7/12)", date: "3/28/2025" },
+        { event: "UFC 318: Holloway vs. Poirier 3", record: "7/9 (10/11)", date: "7/8/2025" },
+        { event: "UFC Fight Night: Oliveira vs. Tsarukyan", record: "7/9 (5/6)", date: "3/28/2025" },
+      ],
+      topMainCardEvents: [
+        { event: "UFC 320: Ankalaev vs. Pereira 2", record: "5/5 (7/7)", date: "5/16/2025" },
+        { event: "UFC 309: Jones vs. Miocic", record: "4/4 (6/6)", date: "11/15/2024" },
+        { event: "UFC Fight Night: Ulanbekov vs. Reyes", record: "4/4 (6/6)", date: "11/15/2024" },
+        { event: "UFC Fight Night: Dariush vs. Gamrot 2", record: "4/4 (6/6)", date: "11/15/2024" },
+        { event: "UFC 316: Dvalishvili vs. O'Malley 2", record: "4/4 (4/4)", date: "4/25/2025" },
+        { event: "UFC Fight Night: Blanchfield vs. Barber", record: "4/5 (5/6)", date: "5/30/2025" },
+        { event: "UFC 317: Topuria vs. Oliveira", record: "4/5 (5/6)", date: "6/27/2025" },
+        { event: "UFC Fight Night: Kape vs. Albazi", record: "4/5 (5/6)", date: "2/28/2025" },
+        { event: "UFC 315: Jones vs. Stipe", record: "4/5 (5/6)", date: "7/10/2025" },
+        { event: "UFC Fight Night: Blanchfield vs. Barber", record: "8/9 (8/11)", date: "5/30/2025" },
+      ],
+      topPrelimsEvents: [
+        { event: "UFC Fight Night: Burns vs. Morales", record: "10/10 (7/7)", date: "5/16/2025" },
+        { event: "UFC 309: Jones vs. Miocic", record: "9/9 (10/11)", date: "11/15/2024" },
+        { event: "UFC 317: Topuria vs. Oliveira", record: "8/9 (5/6)", date: "11/15/2024" },
+        { event: "UFC Fight Night: Kape vs. Albazi", record: "8/9 (5/6)", date: "2/28/2025" },
+        { event: "UFC Fight Night: Machado Garry vs. Prates", record: "8/9 (5/6)", date: "4/25/2025" },
+        { event: "UFC 310: Pantoja vs. Asakura", record: "8/9 (5/6)", date: "12/13/2024" },
+        { event: "UFC 314: Volkanovski vs. Lopes", record: "8/9 (5/6)", date: "4/11/2025" },
+        { event: "UFC Fight Night: Blanchfield vs. Barber", record: "8/9 (8/11)", date: "5/30/2025" },
+        { event: "UFC 309: Jones vs. Miocic", record: "7/7 (5/6)", date: "9/12/2025" },
+        { event: "UFC Fight Night: Oliveira vs. Tsarukyan", record: "7/7 (5/6)", date: "3/28/2025" },
+      ],
     },
   },
   doubleLock: {
-    accuracy: 64.7,               // When both models agree with ≥75% confidence
-    correct: 22,                  // Correct double lock predictions
-    total: 34,                    // Total double lock predictions
+    accuracy: 61.5,
+    correct: 24,
+    total: 39,
   },
   links: {
     discordInvite: "https://discord.com/oauth2/authorize?client_id=1297251219374604388",
@@ -111,8 +185,6 @@ const COMMANDS = [
   },
 ];
 
-// Removed hardcoded BACKGROUND_IMAGES array, it's now imported from imageLoader.js
-
 const App = () => {
   // State for cycling background image index
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
@@ -121,11 +193,10 @@ const App = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentBgIndex((prevIndex) => (prevIndex + 1) % BACKGROUND_IMAGES.length);
-    }, 10000); // Change image every 10000ms (10 seconds)
+    }, 10000);
 
-    // Cleanup function to clear the interval when the component unmounts
     return () => clearInterval(intervalId);
-  }, []); // Empty dependency array means this effect runs only once on mount
+  }, []);
 
   return (
     <div className="relative">
@@ -180,9 +251,9 @@ const App = () => {
           <img
             key={src}
             src={src}
-            alt="" // Alt text is empty as it's decorative
+            alt=""
             className={`background-image ${index === currentBgIndex ? 'visible' : ''}`}
-            loading="lazy" // Lazy load images
+            loading="lazy"
           />
         ))}
       </div>
@@ -192,13 +263,11 @@ const App = () => {
         <Route
           path="/"
           element={
-            // Removed bg-dark-bg to let image background show through
             <div className="min-h-screen text-light-text overflow-hidden relative">
               {/* Main content container */}
               <div className="relative min-h-screen flex flex-col z-10">
-                {/* Increased padding, adjusted max-width and spacing */}
                 <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 flex flex-col items-center justify-center space-y-12 sm:space-y-16 lg:space-y-20">
-                  {/* Logo Section - Enhanced with animation */}
+                  {/* Logo Section */}
                   <a
                     href={CONFIG.links.discordInvite}
                     className="cursor-pointer group animate-fade-in"
@@ -212,7 +281,7 @@ const App = () => {
                     />
                   </a>
 
-                  {/* Hero Section - Premium typography and effects */}
+                  {/* Hero Section */}
                   <div className="text-center space-y-6 max-w-5xl animate-slide-up">
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-light-text leading-none tracking-tighter">
                       <span className="bg-gradient-to-r from-light-text via-primary-red to-light-text bg-clip-text text-transparent animate-pulse-slow">
@@ -236,7 +305,7 @@ const App = () => {
                     </div>
                   </div>
 
-                  {/* CTA Button - Premium design with glow effect */}
+                  {/* CTA Button */}
                   <a
                     href={CONFIG.links.discordInvite}
                     className="group relative inline-flex items-center gap-3 px-12 py-5 bg-gradient-to-r from-primary-red to-red-600 hover:from-red-600 hover:to-primary-red rounded-xl font-bold text-lg text-white shadow-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-primary-red/50 animate-glow"
@@ -250,7 +319,7 @@ const App = () => {
 
                   {/* AI Models Performance - Championship Battle Display */}
                   <div className="w-full max-w-6xl animate-fade-in">
-                    {/* Championship Title with Belt */}
+                    {/* Championship Title */}
                     <div className="text-center mb-12">
                       <h2 className="text-4xl md:text-5xl font-black text-light-text mb-6">
                         <span className="relative">
@@ -259,7 +328,7 @@ const App = () => {
                         </span>
                       </h2>
                       
-                      {/* Championship Belt Visual - Shows Current Champion */}
+                      {/* Championship Belt Visual */}
                       <div className="relative inline-block">
                         <div className="flex items-center justify-center gap-4 px-8 py-4 bg-gradient-to-r from-accent-gold/20 via-yellow-500/30 to-accent-gold/20 rounded-xl border-2 border-accent-gold/50">
                           <Trophy className="w-8 h-8 text-accent-gold animate-pulse" />
@@ -284,6 +353,8 @@ const App = () => {
                         <div className="absolute -bottom-2 -right-2 text-4xl animate-spin-slow" style={{ animationDelay: '1.5s' }}>⭐</div>
                       </div>
                     </div>
+
+                    {/* Model Stats Cards */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                       {Object.entries(CONFIG.stats).map(([key, model], index) => {
                         const isChampion = model.winRate === Math.max(CONFIG.stats.gpt.winRate, CONFIG.stats.claude.winRate);
@@ -303,7 +374,7 @@ const App = () => {
                           <div className={`absolute inset-0 bg-gradient-to-r ${isGPT ? 'from-primary-red/10 to-red-500/10' : 'from-accent-gold/10 to-yellow-500/10'} rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                           
                           <div className={`relative glass-effect p-8 rounded-2xl border ${isChampion ? 'border-accent-gold/50 shadow-lg shadow-accent-gold/20' : 'border-white/10'} group-hover:border-primary-red/30 transition-all duration-300`}>
-                            {/* Header with icon and name */}
+                            {/* Header */}
                             <div className="flex items-center justify-between mb-6">
                               <div className="flex items-center gap-4">
                                 <div className="relative">
@@ -312,7 +383,6 @@ const App = () => {
                                   ) : (
                                     <Bot className="w-12 h-12 text-accent-gold" />
                                   )}
-                                  {/* Championship Crown for Winner */}
                                   {isChampion && (
                                     <div className="absolute -top-3 -right-3 text-2xl animate-pulse">
                                       👑
@@ -342,19 +412,16 @@ const App = () => {
 
                             {/* Main stats grid */}
                             <div className="grid grid-cols-2 gap-4 mb-6">
-                              {/* Fights Predicted */}
                               <div className="bg-dark-bg/50 rounded-lg p-3">
                                 <div className="text-xs text-medium-text uppercase tracking-wider mb-1">Fights</div>
                                 <div className="text-2xl font-bold text-light-text">{model.totalFights}</div>
                               </div>
                               
-                              {/* Correct Predictions */}
                               <div className="bg-dark-bg/50 rounded-lg p-3">
                                 <div className="text-xs text-medium-text uppercase tracking-wider mb-1">Correct</div>
                                 <div className="text-2xl font-bold text-success-green">{model.wins}</div>
                               </div>
                               
-                              {/* Lock Rate */}
                               <div className="bg-dark-bg/50 rounded-lg p-3">
                                 <div className="text-xs text-medium-text uppercase tracking-wider mb-1">Lock Rate (≥75%)</div>
                                 <div className="text-xl font-bold text-accent-gold">
@@ -365,7 +432,6 @@ const App = () => {
                                 </div>
                               </div>
                               
-                              {/* Method Accuracy */}
                               <div className="bg-dark-bg/50 rounded-lg p-3">
                                 <div className="text-xs text-medium-text uppercase tracking-wider mb-1">Method Acc.</div>
                                 <div className="text-xl font-bold text-light-text">{model.methodAccuracy}%</div>
@@ -410,7 +476,7 @@ const App = () => {
                     </div>
                   </div>
 
-                  {/* Double Lock Performance Section - Championship style */}
+                  {/* Double Lock Performance Section */}
                   <div className="w-full max-w-3xl mx-auto animate-fade-in">
                     <h2 className="text-4xl md:text-5xl font-black text-center mb-10 text-light-text">
                       <span className="relative">
@@ -459,7 +525,7 @@ const App = () => {
                     </div>
                   </div>
 
-                  {/* Commands Section - Interactive cards */}
+                  {/* Commands Section */}
                   <div className="w-full max-w-5xl animate-fade-in">
                     <h2 className="text-4xl md:text-5xl font-black text-center mb-10 text-light-text">
                       <span className="relative">
@@ -498,7 +564,7 @@ const App = () => {
                     </div>
                   </div>
 
-                  {/* Donation Section - Centered and Clean */}
+                  {/* Donation Section */}
                   <div className="w-full max-w-2xl mx-auto animate-fade-in">
                     <h2 className="text-4xl md:text-5xl font-black text-center mb-10 text-light-text">
                       <span className="relative inline-flex items-center gap-3">
@@ -535,7 +601,7 @@ const App = () => {
                     </div>
                   </div>
 
-                  {/* Footer Links - Refined design */}
+                  {/* Footer Links */}
                   <div className="flex flex-wrap justify-center items-center gap-6 mt-20 text-base">
                     <a
                       href={CONFIG.social.blog}
@@ -576,7 +642,7 @@ const App = () => {
                   </div>
                 </main>
 
-                {/* Footer - Polished finish */}
+                {/* Footer */}
                 <footer className="text-center py-12 border-t border-white/5">
                   <p className="text-medium-text/60 text-sm font-medium">
                     Fight Genie 1.1 • Corratech LLC
@@ -591,9 +657,7 @@ const App = () => {
         />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsofService />} />
-        {/* Add Gallery Route */}
         <Route path="/gallery" element={<ImageGallery />} />
-        {/* Add Upload Picks Route - Obscure URL */}
         <Route path="/upload-picks-f8d9a2b1c3e4" element={<UploadPicks />} />
       </Routes>
     </div>
