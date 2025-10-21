@@ -633,23 +633,16 @@ const App = () => {
                           </h4>
                           <div className="space-y-2">
                             {CONFIG.stats.gpt.topMainCardEvents.map((event, index) => {
-                              const [mainCard, overall] = event.record.split(' ');
+                              const [mainCard] = event.record.split(' ');
                               return (
                               <div key={index} className="bg-dark-bg/30 p-3 rounded-lg text-sm">
                                 <div className="flex items-start gap-2">
                                   <span className="text-primary-red font-bold flex-shrink-0">{index + 1}.</span>
                                   <div className="flex-1 min-w-0">
                                     <div className="text-light-text font-medium mb-1.5">{event.event}</div>
-                                    <div className="flex items-center gap-3 text-xs">
-                                      <div className="flex items-center gap-1">
-                                        <span className="text-medium-text">Main Card:</span>
-                                        <span className="text-success-green font-bold">{mainCard}</span>
-                                      </div>
-                                      <div className="flex items-center gap-1">
-                                        <span className="text-medium-text">Full Event:</span>
-                                        <span className="text-accent-gold font-bold">{overall}</span>
-                                      </div>
-                                      <span className="text-medium-text/60 ml-auto">{event.date}</span>
+                                    <div className="flex items-center justify-between text-xs">
+                                      <span className="text-success-green font-bold">{mainCard}</span>
+                                      <span className="text-medium-text/60">{event.date}</span>
                                     </div>
                                   </div>
                                 </div>
@@ -667,23 +660,16 @@ const App = () => {
                           </h4>
                           <div className="space-y-2">
                             {CONFIG.stats.gpt.topPrelimsEvents.map((event, index) => {
-                              const [prelims, overall] = event.record.split(' ');
+                              const [prelims] = event.record.split(' ');
                               return (
                               <div key={index} className="bg-dark-bg/30 p-3 rounded-lg text-sm">
                                 <div className="flex items-start gap-2">
                                   <span className="text-primary-red font-bold flex-shrink-0">{index + 1}.</span>
                                   <div className="flex-1 min-w-0">
                                     <div className="text-light-text font-medium mb-1.5">{event.event}</div>
-                                    <div className="flex items-center gap-3 text-xs">
-                                      <div className="flex items-center gap-1">
-                                        <span className="text-medium-text">Prelims:</span>
-                                        <span className="text-success-green font-bold">{prelims}</span>
-                                      </div>
-                                      <div className="flex items-center gap-1">
-                                        <span className="text-medium-text">Full Event:</span>
-                                        <span className="text-accent-gold font-bold">{overall}</span>
-                                      </div>
-                                      <span className="text-medium-text/60 ml-auto">{event.date}</span>
+                                    <div className="flex items-center justify-between text-xs">
+                                      <span className="text-success-green font-bold">{prelims}</span>
+                                      <span className="text-medium-text/60">{event.date}</span>
                                     </div>
                                   </div>
                                 </div>
@@ -710,23 +696,16 @@ const App = () => {
                           </h4>
                           <div className="space-y-2">
                             {CONFIG.stats.claude.topMainCardEvents.map((event, index) => {
-                              const [mainCard, overall] = event.record.split(' ');
+                              const [mainCard] = event.record.split(' ');
                               return (
                               <div key={index} className="bg-dark-bg/30 p-3 rounded-lg text-sm">
                                 <div className="flex items-start gap-2">
                                   <span className="text-accent-gold font-bold flex-shrink-0">{index + 1}.</span>
                                   <div className="flex-1 min-w-0">
                                     <div className="text-light-text font-medium mb-1.5">{event.event}</div>
-                                    <div className="flex items-center gap-3 text-xs">
-                                      <div className="flex items-center gap-1">
-                                        <span className="text-medium-text">Main:</span>
-                                        <span className="text-success-green font-bold">{mainCard}</span>
-                                      </div>
-                                      <div className="flex items-center gap-1">
-                                        <span className="text-medium-text">Overall:</span>
-                                        <span className="text-accent-gold font-bold">{overall}</span>
-                                      </div>
-                                      <span className="text-medium-text/60 ml-auto">{event.date}</span>
+                                    <div className="flex items-center justify-between text-xs">
+                                      <span className="text-success-green font-bold">{mainCard}</span>
+                                      <span className="text-medium-text/60">{event.date}</span>
                                     </div>
                                   </div>
                                 </div>
@@ -744,23 +723,16 @@ const App = () => {
                           </h4>
                           <div className="space-y-2">
                             {CONFIG.stats.claude.topPrelimsEvents.map((event, index) => {
-                              const [prelims, overall] = event.record.split(' ');
+                              const [prelims] = event.record.split(' ');
                               return (
                               <div key={index} className="bg-dark-bg/30 p-3 rounded-lg text-sm">
                                 <div className="flex items-start gap-2">
                                   <span className="text-accent-gold font-bold flex-shrink-0">{index + 1}.</span>
                                   <div className="flex-1 min-w-0">
                                     <div className="text-light-text font-medium mb-1.5">{event.event}</div>
-                                    <div className="flex items-center gap-3 text-xs">
-                                      <div className="flex items-center gap-1">
-                                        <span className="text-medium-text">Prelims:</span>
-                                        <span className="text-success-green font-bold">{prelims}</span>
-                                      </div>
-                                      <div className="flex items-center gap-1">
-                                        <span className="text-medium-text">Overall:</span>
-                                        <span className="text-accent-gold font-bold">{overall}</span>
-                                      </div>
-                                      <span className="text-medium-text/60 ml-auto">{event.date}</span>
+                                    <div className="flex items-center justify-between text-xs">
+                                      <span className="text-success-green font-bold">{prelims}</span>
+                                      <span className="text-medium-text/60">{event.date}</span>
                                     </div>
                                   </div>
                                 </div>
