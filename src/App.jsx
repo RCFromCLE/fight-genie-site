@@ -30,12 +30,12 @@ const CONFIG = {
   stats: {
     gpt: {
       name: "GPT",
-      eventsAnalyzed: 50,
+      eventsAnalyzed: 49,
       totalFights: 622,
       wins: 374,
       winRate: 60.1,
       lockRate: 69.2,
-      lockRateDetails: { correct: 233, total: 333 },
+      lockRateDetails: { correct: 192, total: 333 },
       methodAccuracy: 29.9,
       avgConfidence: 68.6,
       topEvents: [
@@ -77,7 +77,7 @@ const CONFIG = {
     },
     claude: {
       name: "Claude Sonnet 4.5",
-      eventsAnalyzed: 50,
+      eventsAnalyzed: 49,
       totalFights: 618,
       wins: 363,
       winRate: 58.7,
