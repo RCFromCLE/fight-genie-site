@@ -554,11 +554,11 @@ const App = () => {
                                   <div className="text-light-text font-semibold text-sm mb-2">{event.event}</div>
                                   <div className="flex items-center gap-4 text-xs">
                                     <div className="flex items-center gap-1">
-                                      <span className="text-medium-text">Overall:</span>
+                                      <span className="text-medium-text">Event:</span>
                                       <span className="text-success-green font-bold">{overall}</span>
                                     </div>
                                     <div className="flex items-center gap-1">
-                                      <span className="text-medium-text">Card:</span>
+                                      <span className="text-medium-text">Card Type:</span>
                                       <span className="text-accent-gold font-bold">{specific}</span>
                                     </div>
                                     <span className="text-medium-text/60">{event.date}</span>
@@ -642,11 +642,11 @@ const App = () => {
                                     <div className="text-light-text font-medium mb-1.5">{event.event}</div>
                                     <div className="flex items-center gap-3 text-xs">
                                       <div className="flex items-center gap-1">
-                                        <span className="text-medium-text">Main:</span>
+                                        <span className="text-medium-text">Main Card:</span>
                                         <span className="text-success-green font-bold">{mainCard}</span>
                                       </div>
                                       <div className="flex items-center gap-1">
-                                        <span className="text-medium-text">Overall:</span>
+                                        <span className="text-medium-text">Full Event:</span>
                                         <span className="text-accent-gold font-bold">{overall}</span>
                                       </div>
                                       <span className="text-medium-text/60 ml-auto">{event.date}</span>
@@ -680,7 +680,7 @@ const App = () => {
                                         <span className="text-success-green font-bold">{prelims}</span>
                                       </div>
                                       <div className="flex items-center gap-1">
-                                        <span className="text-medium-text">Overall:</span>
+                                        <span className="text-medium-text">Full Event:</span>
                                         <span className="text-accent-gold font-bold">{overall}</span>
                                       </div>
                                       <span className="text-medium-text/60 ml-auto">{event.date}</span>
