@@ -11,6 +11,11 @@ const UploadPicks = () => {
   // Azure Blob Storage configuration from environment variables
   const AZURE_SAS_URL = import.meta.env.VITE_AZURE_SAS_URL;
 
+  // Check if environment variable is set
+  if (!AZURE_SAS_URL) {
+    console.error('VITE_AZURE_SAS_URL environment variable is not set');
+  }
+
   const handleUpload = async (e) => {
     e.preventDefault();
     
@@ -24,6 +29,10 @@ const UploadPicks = () => {
     setUploadStatus(null);
 
     try {
+      if (!AZURE_SAS_URL) {
+        throw new Error('Upload configuration is missing. Please contact the administrator.');
+      }
+
       // Create filename with timestamp
       const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
       const filename = `picks_${timestamp}.txt`;
