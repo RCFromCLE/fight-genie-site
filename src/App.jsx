@@ -542,22 +542,32 @@ const App = () => {
                           <h3 className="text-2xl font-bold text-light-text">{CONFIG.stats.gpt.name} Top Events</h3>
                         </div>
                         <div className="space-y-3">
-                          {CONFIG.stats.gpt.topEvents.map((event, index) => (
+                          {CONFIG.stats.gpt.topEvents.map((event, index) => {
+                            const [overall, specific] = event.record.split(' ');
+                            return (
                             <div key={index} className="bg-dark-bg/50 p-4 rounded-lg hover:bg-dark-bg/70 transition-colors">
                               <div className="flex items-start gap-3">
                                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-red/20 border border-primary-red/40 flex items-center justify-center">
                                   <span className="text-primary-red font-bold text-sm">{index + 1}</span>
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                  <div className="text-light-text font-semibold text-sm mb-1">{event.event}</div>
-                                  <div className="flex items-center gap-3 text-xs">
-                                    <span className="text-success-green font-bold">{event.record}</span>
-                                    <span className="text-medium-text">{event.date}</span>
+                                  <div className="text-light-text font-semibold text-sm mb-2">{event.event}</div>
+                                  <div className="flex items-center gap-4 text-xs">
+                                    <div className="flex items-center gap-1">
+                                      <span className="text-medium-text">Overall:</span>
+                                      <span className="text-success-green font-bold">{overall}</span>
+                                    </div>
+                                    <div className="flex items-center gap-1">
+                                      <span className="text-medium-text">Card:</span>
+                                      <span className="text-accent-gold font-bold">{specific}</span>
+                                    </div>
+                                    <span className="text-medium-text/60">{event.date}</span>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                          ))}
+                            );
+                          })}
                         </div>
                       </div>
 
@@ -568,22 +578,32 @@ const App = () => {
                           <h3 className="text-2xl font-bold text-light-text">{CONFIG.stats.claude.name} Top Events</h3>
                         </div>
                         <div className="space-y-3">
-                          {CONFIG.stats.claude.topEvents.map((event, index) => (
+                          {CONFIG.stats.claude.topEvents.map((event, index) => {
+                            const [overall, specific] = event.record.split(' ');
+                            return (
                             <div key={index} className="bg-dark-bg/50 p-4 rounded-lg hover:bg-dark-bg/70 transition-colors">
                               <div className="flex items-start gap-3">
                                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent-gold/20 border border-accent-gold/40 flex items-center justify-center">
                                   <span className="text-accent-gold font-bold text-sm">{index + 1}</span>
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                  <div className="text-light-text font-semibold text-sm mb-1">{event.event}</div>
-                                  <div className="flex items-center gap-3 text-xs">
-                                    <span className="text-success-green font-bold">{event.record}</span>
-                                    <span className="text-medium-text">{event.date}</span>
+                                  <div className="text-light-text font-semibold text-sm mb-2">{event.event}</div>
+                                  <div className="flex items-center gap-4 text-xs">
+                                    <div className="flex items-center gap-1">
+                                      <span className="text-medium-text">Overall:</span>
+                                      <span className="text-success-green font-bold">{overall}</span>
+                                    </div>
+                                    <div className="flex items-center gap-1">
+                                      <span className="text-medium-text">Card:</span>
+                                      <span className="text-accent-gold font-bold">{specific}</span>
+                                    </div>
+                                    <span className="text-medium-text/60">{event.date}</span>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                          ))}
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
@@ -612,20 +632,30 @@ const App = () => {
                             Top 10 Main Card Events
                           </h4>
                           <div className="space-y-2">
-                            {CONFIG.stats.gpt.topMainCardEvents.map((event, index) => (
+                            {CONFIG.stats.gpt.topMainCardEvents.map((event, index) => {
+                              const [mainCard, overall] = event.record.split(' ');
+                              return (
                               <div key={index} className="bg-dark-bg/30 p-3 rounded-lg text-sm">
                                 <div className="flex items-start gap-2">
                                   <span className="text-primary-red font-bold flex-shrink-0">{index + 1}.</span>
                                   <div className="flex-1 min-w-0">
-                                    <div className="text-light-text font-medium mb-1">{event.event}</div>
-                                    <div className="flex items-center gap-2 text-xs">
-                                      <span className="text-success-green font-bold">{event.record}</span>
-                                      <span className="text-medium-text">{event.date}</span>
+                                    <div className="text-light-text font-medium mb-1.5">{event.event}</div>
+                                    <div className="flex items-center gap-3 text-xs">
+                                      <div className="flex items-center gap-1">
+                                        <span className="text-medium-text">Main:</span>
+                                        <span className="text-success-green font-bold">{mainCard}</span>
+                                      </div>
+                                      <div className="flex items-center gap-1">
+                                        <span className="text-medium-text">Overall:</span>
+                                        <span className="text-accent-gold font-bold">{overall}</span>
+                                      </div>
+                                      <span className="text-medium-text/60 ml-auto">{event.date}</span>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                            ))}
+                              );
+                            })}
                           </div>
                         </div>
 
@@ -636,20 +666,30 @@ const App = () => {
                             Top 10 Prelim Events
                           </h4>
                           <div className="space-y-2">
-                            {CONFIG.stats.gpt.topPrelimsEvents.map((event, index) => (
+                            {CONFIG.stats.gpt.topPrelimsEvents.map((event, index) => {
+                              const [prelims, overall] = event.record.split(' ');
+                              return (
                               <div key={index} className="bg-dark-bg/30 p-3 rounded-lg text-sm">
                                 <div className="flex items-start gap-2">
                                   <span className="text-primary-red font-bold flex-shrink-0">{index + 1}.</span>
                                   <div className="flex-1 min-w-0">
-                                    <div className="text-light-text font-medium mb-1">{event.event}</div>
-                                    <div className="flex items-center gap-2 text-xs">
-                                      <span className="text-success-green font-bold">{event.record}</span>
-                                      <span className="text-medium-text">{event.date}</span>
+                                    <div className="text-light-text font-medium mb-1.5">{event.event}</div>
+                                    <div className="flex items-center gap-3 text-xs">
+                                      <div className="flex items-center gap-1">
+                                        <span className="text-medium-text">Prelims:</span>
+                                        <span className="text-success-green font-bold">{prelims}</span>
+                                      </div>
+                                      <div className="flex items-center gap-1">
+                                        <span className="text-medium-text">Overall:</span>
+                                        <span className="text-accent-gold font-bold">{overall}</span>
+                                      </div>
+                                      <span className="text-medium-text/60 ml-auto">{event.date}</span>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                            ))}
+                              );
+                            })}
                           </div>
                         </div>
                       </div>
@@ -669,20 +709,30 @@ const App = () => {
                             Top 10 Main Card Events
                           </h4>
                           <div className="space-y-2">
-                            {CONFIG.stats.claude.topMainCardEvents.map((event, index) => (
+                            {CONFIG.stats.claude.topMainCardEvents.map((event, index) => {
+                              const [mainCard, overall] = event.record.split(' ');
+                              return (
                               <div key={index} className="bg-dark-bg/30 p-3 rounded-lg text-sm">
                                 <div className="flex items-start gap-2">
                                   <span className="text-accent-gold font-bold flex-shrink-0">{index + 1}.</span>
                                   <div className="flex-1 min-w-0">
-                                    <div className="text-light-text font-medium mb-1">{event.event}</div>
-                                    <div className="flex items-center gap-2 text-xs">
-                                      <span className="text-success-green font-bold">{event.record}</span>
-                                      <span className="text-medium-text">{event.date}</span>
+                                    <div className="text-light-text font-medium mb-1.5">{event.event}</div>
+                                    <div className="flex items-center gap-3 text-xs">
+                                      <div className="flex items-center gap-1">
+                                        <span className="text-medium-text">Main:</span>
+                                        <span className="text-success-green font-bold">{mainCard}</span>
+                                      </div>
+                                      <div className="flex items-center gap-1">
+                                        <span className="text-medium-text">Overall:</span>
+                                        <span className="text-accent-gold font-bold">{overall}</span>
+                                      </div>
+                                      <span className="text-medium-text/60 ml-auto">{event.date}</span>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                            ))}
+                              );
+                            })}
                           </div>
                         </div>
 
@@ -693,20 +743,30 @@ const App = () => {
                             Top 10 Prelim Events
                           </h4>
                           <div className="space-y-2">
-                            {CONFIG.stats.claude.topPrelimsEvents.map((event, index) => (
+                            {CONFIG.stats.claude.topPrelimsEvents.map((event, index) => {
+                              const [prelims, overall] = event.record.split(' ');
+                              return (
                               <div key={index} className="bg-dark-bg/30 p-3 rounded-lg text-sm">
                                 <div className="flex items-start gap-2">
                                   <span className="text-accent-gold font-bold flex-shrink-0">{index + 1}.</span>
                                   <div className="flex-1 min-w-0">
-                                    <div className="text-light-text font-medium mb-1">{event.event}</div>
-                                    <div className="flex items-center gap-2 text-xs">
-                                      <span className="text-success-green font-bold">{event.record}</span>
-                                      <span className="text-medium-text">{event.date}</span>
+                                    <div className="text-light-text font-medium mb-1.5">{event.event}</div>
+                                    <div className="flex items-center gap-3 text-xs">
+                                      <div className="flex items-center gap-1">
+                                        <span className="text-medium-text">Prelims:</span>
+                                        <span className="text-success-green font-bold">{prelims}</span>
+                                      </div>
+                                      <div className="flex items-center gap-1">
+                                        <span className="text-medium-text">Overall:</span>
+                                        <span className="text-accent-gold font-bold">{overall}</span>
+                                      </div>
+                                      <span className="text-medium-text/60 ml-auto">{event.date}</span>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                            ))}
+                              );
+                            })}
                           </div>
                         </div>
                       </div>
