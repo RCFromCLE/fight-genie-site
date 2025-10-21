@@ -525,6 +525,194 @@ const App = () => {
                     </div>
                   </div>
 
+                  {/* Top 10 Best Events Section */}
+                  <div className="w-full max-w-6xl animate-fade-in">
+                    <h2 className="text-4xl md:text-5xl font-black text-center mb-12 text-light-text">
+                      <span className="relative">
+                        🏆 Top 10 Best Events 🏆
+                        <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-accent-gold to-transparent" />
+                      </span>
+                    </h2>
+                    
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                      {/* GPT Top Events */}
+                      <div className="glass-effect p-6 rounded-2xl border border-primary-red/30">
+                        <div className="flex items-center gap-3 mb-6">
+                          <Brain className="w-8 h-8 text-primary-red" />
+                          <h3 className="text-2xl font-bold text-light-text">{CONFIG.stats.gpt.name} Top Events</h3>
+                        </div>
+                        <div className="space-y-3">
+                          {CONFIG.stats.gpt.topEvents.map((event, index) => (
+                            <div key={index} className="bg-dark-bg/50 p-4 rounded-lg hover:bg-dark-bg/70 transition-colors">
+                              <div className="flex items-start gap-3">
+                                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-red/20 border border-primary-red/40 flex items-center justify-center">
+                                  <span className="text-primary-red font-bold text-sm">{index + 1}</span>
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="text-light-text font-semibold text-sm mb-1">{event.event}</div>
+                                  <div className="flex items-center gap-3 text-xs">
+                                    <span className="text-success-green font-bold">{event.record}</span>
+                                    <span className="text-medium-text">{event.date}</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Claude Top Events */}
+                      <div className="glass-effect p-6 rounded-2xl border border-accent-gold/30">
+                        <div className="flex items-center gap-3 mb-6">
+                          <Bot className="w-8 h-8 text-accent-gold" />
+                          <h3 className="text-2xl font-bold text-light-text">{CONFIG.stats.claude.name} Top Events</h3>
+                        </div>
+                        <div className="space-y-3">
+                          {CONFIG.stats.claude.topEvents.map((event, index) => (
+                            <div key={index} className="bg-dark-bg/50 p-4 rounded-lg hover:bg-dark-bg/70 transition-colors">
+                              <div className="flex items-start gap-3">
+                                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent-gold/20 border border-accent-gold/40 flex items-center justify-center">
+                                  <span className="text-accent-gold font-bold text-sm">{index + 1}</span>
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="text-light-text font-semibold text-sm mb-1">{event.event}</div>
+                                  <div className="flex items-center gap-3 text-xs">
+                                    <span className="text-success-green font-bold">{event.record}</span>
+                                    <span className="text-medium-text">{event.date}</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Top Main Card & Prelim Events Section */}
+                  <div className="w-full max-w-6xl animate-fade-in">
+                    <h2 className="text-4xl md:text-5xl font-black text-center mb-12 text-light-text">
+                      <span className="relative">
+                        📊 Top Main Card & Prelim Events 📊
+                        <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-primary-red to-transparent" />
+                      </span>
+                    </h2>
+                    
+                    {/* GPT Events */}
+                    <div className="mb-12">
+                      <div className="flex items-center gap-3 mb-6">
+                        <Brain className="w-8 h-8 text-primary-red" />
+                        <h3 className="text-3xl font-bold text-light-text">{CONFIG.stats.gpt.name}</h3>
+                      </div>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        {/* GPT Main Card */}
+                        <div className="glass-effect p-6 rounded-2xl border border-primary-red/20">
+                          <h4 className="text-xl font-bold text-primary-red mb-4 flex items-center gap-2">
+                            <Award className="w-5 h-5" />
+                            Top 10 Main Card Events
+                          </h4>
+                          <div className="space-y-2">
+                            {CONFIG.stats.gpt.topMainCardEvents.map((event, index) => (
+                              <div key={index} className="bg-dark-bg/30 p-3 rounded-lg text-sm">
+                                <div className="flex items-start gap-2">
+                                  <span className="text-primary-red font-bold flex-shrink-0">{index + 1}.</span>
+                                  <div className="flex-1 min-w-0">
+                                    <div className="text-light-text font-medium mb-1">{event.event}</div>
+                                    <div className="flex items-center gap-2 text-xs">
+                                      <span className="text-success-green font-bold">{event.record}</span>
+                                      <span className="text-medium-text">{event.date}</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* GPT Prelims */}
+                        <div className="glass-effect p-6 rounded-2xl border border-primary-red/20">
+                          <h4 className="text-xl font-bold text-primary-red mb-4 flex items-center gap-2">
+                            <TrendingUp className="w-5 h-5" />
+                            Top 10 Prelim Events
+                          </h4>
+                          <div className="space-y-2">
+                            {CONFIG.stats.gpt.topPrelimsEvents.map((event, index) => (
+                              <div key={index} className="bg-dark-bg/30 p-3 rounded-lg text-sm">
+                                <div className="flex items-start gap-2">
+                                  <span className="text-primary-red font-bold flex-shrink-0">{index + 1}.</span>
+                                  <div className="flex-1 min-w-0">
+                                    <div className="text-light-text font-medium mb-1">{event.event}</div>
+                                    <div className="flex items-center gap-2 text-xs">
+                                      <span className="text-success-green font-bold">{event.record}</span>
+                                      <span className="text-medium-text">{event.date}</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Claude Events */}
+                    <div>
+                      <div className="flex items-center gap-3 mb-6">
+                        <Bot className="w-8 h-8 text-accent-gold" />
+                        <h3 className="text-3xl font-bold text-light-text">{CONFIG.stats.claude.name}</h3>
+                      </div>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        {/* Claude Main Card */}
+                        <div className="glass-effect p-6 rounded-2xl border border-accent-gold/20">
+                          <h4 className="text-xl font-bold text-accent-gold mb-4 flex items-center gap-2">
+                            <Award className="w-5 h-5" />
+                            Top 10 Main Card Events
+                          </h4>
+                          <div className="space-y-2">
+                            {CONFIG.stats.claude.topMainCardEvents.map((event, index) => (
+                              <div key={index} className="bg-dark-bg/30 p-3 rounded-lg text-sm">
+                                <div className="flex items-start gap-2">
+                                  <span className="text-accent-gold font-bold flex-shrink-0">{index + 1}.</span>
+                                  <div className="flex-1 min-w-0">
+                                    <div className="text-light-text font-medium mb-1">{event.event}</div>
+                                    <div className="flex items-center gap-2 text-xs">
+                                      <span className="text-success-green font-bold">{event.record}</span>
+                                      <span className="text-medium-text">{event.date}</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Claude Prelims */}
+                        <div className="glass-effect p-6 rounded-2xl border border-accent-gold/20">
+                          <h4 className="text-xl font-bold text-accent-gold mb-4 flex items-center gap-2">
+                            <TrendingUp className="w-5 h-5" />
+                            Top 10 Prelim Events
+                          </h4>
+                          <div className="space-y-2">
+                            {CONFIG.stats.claude.topPrelimsEvents.map((event, index) => (
+                              <div key={index} className="bg-dark-bg/30 p-3 rounded-lg text-sm">
+                                <div className="flex items-start gap-2">
+                                  <span className="text-accent-gold font-bold flex-shrink-0">{index + 1}.</span>
+                                  <div className="flex-1 min-w-0">
+                                    <div className="text-light-text font-medium mb-1">{event.event}</div>
+                                    <div className="flex items-center gap-2 text-xs">
+                                      <span className="text-success-green font-bold">{event.record}</span>
+                                      <span className="text-medium-text">{event.date}</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   {/* Commands Section */}
                   <div className="w-full max-w-5xl animate-fade-in">
                     <h2 className="text-4xl md:text-5xl font-black text-center mb-10 text-light-text">
