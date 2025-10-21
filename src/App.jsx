@@ -3,6 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx';
 import TermsofService from './pages/TermsofService.jsx';
 import ImageGallery from './pages/ImageGallery.jsx'; // Import the new gallery component
+import UploadPicks from './pages/UploadPicks.jsx'; // Import the upload picks component
 import { BACKGROUND_IMAGES } from './utils/imageLoader.js'; // Import dynamic image list
 import {
   Brain,
@@ -591,7 +592,9 @@ const App = () => {
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsofService />} />
         {/* Add Gallery Route */}
-        <Route path="/gallery" element={<ImageGallery />} /> 
+        <Route path="/gallery" element={<ImageGallery />} />
+        {/* Add Upload Picks Route - Obscure URL */}
+        <Route path="/upload-picks-f8d9a2b1c3e4" element={<UploadPicks />} />
       </Routes>
     </div>
   );
