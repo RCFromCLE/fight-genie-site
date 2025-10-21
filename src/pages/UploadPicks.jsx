@@ -11,6 +11,10 @@ const UploadPicks = () => {
   // GitHub token from environment variable
   const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 
+  // Debug: Log token status (not the actual token)
+  console.log('GitHub token loaded:', !!GITHUB_TOKEN);
+  console.log('Environment variables:', import.meta.env);
+
   const handleUpload = async (e) => {
     e.preventDefault();
     
